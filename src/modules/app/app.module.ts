@@ -16,8 +16,8 @@ import { AppResolver } from './app.resolver';
       useFactory: async (envService: EnvService) => ({
         autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
         sortSchema: true,
+        playground: false,
         plugins: [ApolloServerPluginLandingPageLocalDefault()],
-        playground: envService['NODE_ENV'] === 'development',
         context: ({ req }) => ({ req }),
       }),
       inject: [EnvService],

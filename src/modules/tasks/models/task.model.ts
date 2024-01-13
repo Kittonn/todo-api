@@ -1,11 +1,9 @@
 import { User } from '@/modules/users/models/user.model';
-import { Field, ObjectType, ID } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
+import { BaseModel } from '@/shared/models/base.model';
 
 @ObjectType()
-export class Task {
-  @Field((type) => ID)
-  id: string;
-
+export class Task extends BaseModel {
   @Field((type) => String)
   title: string;
 
@@ -17,10 +15,4 @@ export class Task {
 
   @Field((type) => User)
   user: User;
-
-  @Field((type) => String)
-  createdAt: Date;
-
-  @Field((type) => String)
-  updatedAt: Date;
 }

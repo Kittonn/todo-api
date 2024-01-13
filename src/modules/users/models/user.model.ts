@@ -1,26 +1,15 @@
 import { Task } from '@/modules/tasks/models/task.model';
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { BaseModel } from '@/shared/models/base.model';
+import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
-export class User {
-  @Field((type) => ID)
-  id: string;
-
+export class User extends BaseModel {
   @Field((type) => String)
   email: string;
-
-  @Field((type) => String)
-  password: string;
 
   @Field((type) => String)
   name: string;
 
   @Field((type) => [Task])
   tasks: Task[];
-
-  @Field((type) => String)
-  createdAt: Date;
-
-  @Field((type) => String)
-  updatedAt: Date;
 }
