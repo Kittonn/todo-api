@@ -22,4 +22,15 @@ export class UsersService {
     const user = await this.usersRepository.findOne({ where: { email } });
     return user;
   }
+
+  async setNewRefreshToken(
+    userId: string,
+    refreshToken: string,
+  ): Promise<void> {
+    const hashedRefreshToken = await bcrypt.hash(refreshToken, 10);
+    await this.usersRepository.update({
+      where: { id: userId },
+      data: { refreshToken: hashedRefreshToken },
+    });
+  }
 }

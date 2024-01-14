@@ -36,13 +36,13 @@ import { OriginalError } from '@/shared/types/error';
           if (!originalError) {
             return {
               message: error.message,
-              statusCode: error.extensions?.code,
+              code: error.extensions?.code,
             };
           }
 
           return {
             message: originalError.message,
-            statusCode: error.extensions?.code,
+            code: error.extensions?.code,
           };
         },
       }),
