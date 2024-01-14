@@ -7,6 +7,7 @@ import { EnvService } from '../env/env.service';
 import { join } from 'path';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { AppResolver } from './app.resolver';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { AppResolver } from './app.resolver';
       inject: [EnvService],
     }),
     EnvModule,
+    AuthModule,
   ],
-  providers: [AppService, AppResolver],
+  providers: [AppResolver, AppService],
 })
 export class AppModule {}
