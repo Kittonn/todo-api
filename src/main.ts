@@ -14,12 +14,12 @@ async function bootstrap() {
   const { httpAdapter } = app.get(HttpAdapterHost);
 
   app.enableCors();
-  app.useGlobalFilters(new PrismaClientExceptionFilter(httpAdapter));
+  app.useGlobalFilters(new PrismaClientExceptionFilter());
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
       whitelist: true,
-      disableErrorMessages: nodeEnv === Environment.DEVELOPMENT,
+      disableErrorMessages: nodeEnv === Environment.PRODUCTION,
     }),
   );
 
