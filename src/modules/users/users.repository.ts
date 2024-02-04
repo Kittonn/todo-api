@@ -7,7 +7,7 @@ export class UsersRepository {
   constructor(private prisma: PrismaService) {}
 
   async create(data: Prisma.UserCreateInput): Promise<User> {
-    return this.prisma.user.create({ data });
+    return await this.prisma.user.create({ data });
   }
 
   async findOne(params: {
@@ -15,7 +15,7 @@ export class UsersRepository {
     select?: Prisma.UserSelect;
     include?: Prisma.UserInclude;
   }): Promise<User | null> {
-    return this.prisma.user.findUnique({ ...params });
+    return await this.prisma.user.findUnique({ ...params });
   }
 
   async find(params: {
@@ -27,7 +27,7 @@ export class UsersRepository {
     select?: Prisma.UserSelect;
     include?: Prisma.UserInclude;
   }): Promise<User[]> {
-    return this.prisma.user.findMany({ ...params });
+    return await this.prisma.user.findMany({ ...params });
   }
 
   async update(params: {
@@ -36,10 +36,10 @@ export class UsersRepository {
     select?: Prisma.UserSelect;
     include?: Prisma.UserInclude;
   }): Promise<User> {
-    return this.prisma.user.update({ ...params });
+    return await this.prisma.user.update({ ...params });
   }
 
   async delete(params: { where: Prisma.UserWhereUniqueInput }): Promise<User> {
-    return this.prisma.user.delete({ ...params });
+    return await this.prisma.user.delete({ ...params });
   }
 }

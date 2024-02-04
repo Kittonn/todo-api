@@ -7,7 +7,7 @@ export class TasksRepository {
   constructor(private prisma: PrismaService) {}
 
   async create(data: Prisma.TaskCreateInput): Promise<Task> {
-    return this.prisma.task.create({ data });
+    return await this.prisma.task.create({ data });
   }
 
   async findOne(params: {
@@ -15,7 +15,7 @@ export class TasksRepository {
     select?: Prisma.TaskSelect;
     include?: Prisma.TaskInclude;
   }): Promise<Task | null> {
-    return this.prisma.task.findUnique({ ...params });
+    return await this.prisma.task.findUnique({ ...params });
   }
 
   async find(params: {
@@ -27,7 +27,7 @@ export class TasksRepository {
     select?: Prisma.TaskSelect;
     include?: Prisma.TaskInclude;
   }): Promise<Task[]> {
-    return this.prisma.task.findMany({ ...params });
+    return await this.prisma.task.findMany({ ...params });
   }
 
   async update(params: {
@@ -36,10 +36,10 @@ export class TasksRepository {
     select?: Prisma.TaskSelect;
     include?: Prisma.TaskInclude;
   }): Promise<Task> {
-    return this.prisma.task.update({ ...params });
+    return await this.prisma.task.update({ ...params });
   }
 
   async delete(params: { where: Prisma.TaskWhereUniqueInput }): Promise<Task> {
-    return this.prisma.task.delete({ ...params });
+    return await this.prisma.task.delete({ ...params });
   }
 }

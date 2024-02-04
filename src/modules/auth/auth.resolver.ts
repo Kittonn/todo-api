@@ -13,11 +13,11 @@ export class AuthResolver {
   async register(
     @Args('registerInput') registerInput: RegisterInput,
   ): Promise<Token> {
-    return this.authService.register(registerInput);
+    return await this.authService.register(registerInput);
   }
 
   @Mutation(() => Auth)
   async login(@Args('loginInput') loginInput: LoginInput): Promise<Token> {
-    return this.authService.login(loginInput);
+    return await this.authService.login(loginInput);
   }
 }
